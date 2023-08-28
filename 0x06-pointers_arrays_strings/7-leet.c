@@ -4,57 +4,45 @@
 
 /**
  *leet- to encode a string
- *@s: string to be tested.
+ *@array: string to be tested.
  *Return:returns an encoded string.
  */
-char *leet(char *s)
+char *leet(char *array)
 {
-	/*string to store encoded string */
-	char *encoded = (char *)malloc(strlen(s) + 10);
-	int encodedIndex = 0;
 	int i;
 
-	if (encoded == NULL)
+	for (i = 0; array[i] != '\0'; i++)
 	{
-		return NULL;
-	}
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		char c = s[i];
-		int isUppercase = (c >= 'A' && c <= 'Z');
+		char c = array[i];
+		int isUpperCase = (c >= 'A' && c <= 'Z');
 
-		if (isUppercase)
+		if (isUpperCase)
 		{
 			c += ('a' - 'A');
 		}
-		if (c == 'a' || c == 'e' || c == 'o' || c == 't' || c == '1')
+		if (c == 'a' || c == 'e' || c == 'o' || c == 't' || c == 'l')
 		{
 			if (c == 'a' || c == 'A')
 			{
-				encoded[encodedIndex++] = '4';
+				array[i] = '4';
 			}
 			else if (c == 'e' || c == 'E')
-                        {
-                                encoded[encodedIndex++] = '3';
-                        }
-			else if (c == 'o' || c == 'O')
-                        {
-                                encoded[encodedIndex++] = '0';
-                        }
-			else if (c == 't' || c == 'T')
-                        {
-                                encoded[encodedIndex++] = '7';
-                        }
-			else if (c == 'l' || c == 'L')
-                        {
-                                encoded[encodedIndex++] = '1';
-                        }
-		}
-			else
 			{
-                                encoded[encodedIndex++] = s[i];
-                        }
+				array[i] = '3';
+			}
+			else if (c == 'o' || c == 'O')
+			{
+				array[i] = '0';
+			}
+			else if (c == 't' || c == 'T')
+			{
+				array[i] = '7';
+			}
+			else if (c == 'l' || c == 'L')
+			{
+				array[i] = '1';
+			}
 		}
-		encoded[encodedIndex] = '\0';
-		return encoded;
+	}
+	return (array);
 }
