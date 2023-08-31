@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include "main.h"
 
 /**
  *_pow_recursion - prints the power of a number
