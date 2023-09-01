@@ -12,8 +12,10 @@ int _sqrt(int n, int i);
  */
 int _sqrt_recursion(int n)
 {
+	/*checks that the number is a natural number.if not return -1 */
 	if (n < 0)
 		return (-1);
+	/*i dont understand the function of the 0. */
 	return (_sqrt(n, 0));
 }
 
@@ -31,9 +33,11 @@ int _sqrt(int n, int i)
 	{
 		return (-1);
 	}
-	if (sqrt --)
+	/*if the number is a perfect square(ixi) return i */
+	if (sqrt == n)
 	{
 		return (i);
 	}
-	return(_sqrt(n, i + 1));
+	/*return the square root and the call the next number to be executed */
+	return (_sqrt(n, i + 1));
 }
