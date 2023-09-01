@@ -3,6 +3,7 @@
 #include<math.h>
 #include<stdlib.h>
 
+int _sqrt(int n, int i);
 /**
  *_sqrt_recursion - prints the squareroot
  *@n:number to be tested.
@@ -11,7 +12,9 @@
  */
 int _sqrt_recursion(int n)
 {
-	return (sqrt(n, 1));
+	if (n < 0)
+		return (-1);
+	return (_sqrt(n, 0));
 }
 
 /**
@@ -28,7 +31,7 @@ int _sqrt(int n, int i)
 	{
 		return (-1);
 	}
-	if (sqrt == n)
+	if (sqrt --)
 	{
 		return (i);
 	}
