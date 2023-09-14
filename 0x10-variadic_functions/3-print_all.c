@@ -25,19 +25,19 @@ void print_all(const char * const format, ...)
 			{
 				case 'c':
 					printf("%s%c", sep, va_arg(all, int));
-				       break;
+					break;
 				case 'i':
 					printf("%s%d", sep, va_arg(all, int));
-			 		break;
+					break;
 				case 'f':
-					printf("%s%f", sep, va_arg(all,double));
-                                        break;
+					printf("%s%f", sep, va_arg(all, double));
+					break;
 				case 's':
 					str = va_arg(all, char *);
 					if (!str)
 						str = "(nil)";
 					printf("%s%s", sep, str);
-                                        break;
+					break;
 				default:
 					i++;
 					continue;
