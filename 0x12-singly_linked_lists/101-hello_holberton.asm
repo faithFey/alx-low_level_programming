@@ -1,5 +1,5 @@
 section .data
-	hello db 'Hello, Holberton', 0  
+	hello db 'Hello, Holberton', 0
 section .text
 	global main
 
@@ -8,5 +8,5 @@ section .text
 	main:
 	mov rdi, hello
 	call printf
-	add esp, 0 
+	add esp, 0
 	ret
