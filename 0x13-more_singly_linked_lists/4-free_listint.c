@@ -1,8 +1,9 @@
 #include "lists.h"
 
-/**free_listint - frees the listint linked list
+/**
+ *free_listint - frees the listint linked list
  *@head:pointer to the head of the node.
- *
+ *Return:nothing
  */
 void free_listint(listint_t *head)
 {
