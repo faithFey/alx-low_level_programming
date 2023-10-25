@@ -1,12 +1,9 @@
-section .data
-	hello db 'Hello, Holberton', 0
-section .text
 	global main
-
 	extern printf
-
-	main:
-	mov rdi, hello
+main:
+	mov edi, format
+	xor eax, eax
 	call printf
-	add esp, 0
+	mov eax, 0
 	ret
+format:db `Hello, Holberton\n`,0
