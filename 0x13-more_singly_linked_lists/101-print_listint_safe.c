@@ -1,36 +1,72 @@
 #include "lists.h"
 
 /**
+ *looped_listint_len - counts the number of nodes
+ *@head:pointer to the head of the list.
+ *Return:number of the nodea in the list
+ */
+size_t looped_listint_len(const listint_t *head)
+{
+	const listint_t *tortoise, *hare;
+	size_t node = 1;
+
+	if (head == NULL || head->next == NULL)
+		return (0);
+	tortoise = head->next;
+	hare = (head->next)->next;
+
+	while (hare)
+	{
+		if (tortoise == hare)
+		{
+			tortoise = head;
+			while (tortoise != hare)
+			{
+				node++;
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
+			tortoise = tortoise->next;
+			while (tortoise != hare)
+			{
+				node++;
+				tortoise = tortoise->next;
+			}
+			return (node);
+		}
+		tortoise = tortoise->next;
+		hare = (hare->next)->next;
+	}
+	return (0);
+}
+
+/**
  *print_listint_safe - prints a listint_t linked list.
  *@head:pointer head of the list.
  *Return:number of nodes in the list
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *slow_ptr = head;
-	const listint_t *fast_ptr = head;
-	size_t nodeCount = 0;
+	size_t nodes, index = 0;
 
-	while (fast_ptr != NULL && fast_ptr->next != NULL)
+	nodes = looped_listint_len(head);
+
+	if (nodes == 0)
 	{
-		printf("%d\n", slow_ptr->n);
-		nodeCount++;
-
-		slow_ptr = slow_ptr->next;
-		fast_ptr = fast_ptr->next->next;
-
-		if (slow_ptr == fast_ptr)
+		for (; head != NULL; nodes++)
 		{
-			printf("->[%d] %d\n", slow_ptr->n, fast_ptr->n);
-			printf("->[%d] %d\n", slow_ptr->n, fast_ptr->next->n);
-			exit(98);
+			printf("[%p]%d\n", (void *)head, head->n);
+			head = head->next;
 		}
 	}
-	while (slow_ptr != NULL)
+	else
 	{
-		printf("%d\n", slow_ptr->n);
-		nodeCount++;
-		slow_ptr = slow_ptr->next;
+		for (index = 0; index < nodes; index++)
+		{
+			printf("[%p]%d\n", (void *)head, head->n);
+			head = head->next;
+		}
+		printf("->[%p]%d\n", (void *)head, head->n);
 	}
-	return (nodeCount);
+	return (nodes);
 }
