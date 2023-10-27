@@ -1,32 +1,46 @@
 #include "main.h"
 
 /**
+ *_pow - calculates the power of the base
+ *@base:base of the interger
+ *@power:power of the interger value
+ *Return:results
+ */
+unsigned long int _pow(unsigned int base, unsigned int power)
+{
+	unsigned long int results;
+	unsigned int i;
+
+	results = 1;
+	for (i = 1; i <= power; i++)
+		results *= base;
+	return (results);
+}
+/**
  *print_binary - prints the binary representation of a number.
  *@n:input binary
  *Return:void.
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int a = 1UL << (sizeof(unsigned long int) * 8 - 1);
-	int leadingZeros = 1;
+	unsigned long int divisor, check;
+	char flag;
 
-	while (a > 0)
+	flag = 0;
+	divisor = _pow(2, sizeof(unsigned long int) *8 - 1);
+
+	while (divisor != 0)
 	{
-		if (n & a)
+		check = n & divisor;
+		if (check == divisor)
 		{
-			printf("1");
-			leadingZeros = 0;
-		
+			flag = 1;
+			_putchar('1');
 		}
-		else if (!leadingZeros)
+		else if (flag == 1 || divisor == 1)
 		{
-			printf("0");
+			_putchar('0');
 		}
-			a >>= 1;
+		divisor >>= 1;
 	}
-	if (leadingZeros)
-	{
-		printf("0");
-	}
-	printf("\n");
-}	
+}
